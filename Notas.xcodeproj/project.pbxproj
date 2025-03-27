@@ -6,11 +6,27 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		876D9DEE2D94E4F7007EBA70 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87B6D5F52D8BA636000B60B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87B6D5FC2D8BA636000B60B0;
+			remoteInfo = Notas;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		876D9DEA2D94E4F7007EBA70 /* NotasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B6D5FD2D8BA636000B60B0 /* Notas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		876D9DEB2D94E4F7007EBA70 /* NotasTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NotasTests;
+			sourceTree = "<group>";
+		};
 		87B6D5FF2D8BA636000B60B0 /* Notas */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = Notas;
@@ -19,6 +35,13 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		876D9DE72D94E4F7007EBA70 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		87B6D5FA2D8BA636000B60B0 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				87B6D5FF2D8BA636000B60B0 /* Notas */,
+				876D9DEB2D94E4F7007EBA70 /* NotasTests */,
 				87B6D5FE2D8BA636000B60B0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				87B6D5FD2D8BA636000B60B0 /* Notas.app */,
+				876D9DEA2D94E4F7007EBA70 /* NotasTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,6 +73,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		876D9DE92D94E4F7007EBA70 /* NotasTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 876D9DF02D94E4F7007EBA70 /* Build configuration list for PBXNativeTarget "NotasTests" */;
+			buildPhases = (
+				876D9DE62D94E4F7007EBA70 /* Sources */,
+				876D9DE72D94E4F7007EBA70 /* Frameworks */,
+				876D9DE82D94E4F7007EBA70 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				876D9DEF2D94E4F7007EBA70 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				876D9DEB2D94E4F7007EBA70 /* NotasTests */,
+			);
+			name = NotasTests;
+			packageProductDependencies = (
+			);
+			productName = NotasTests;
+			productReference = 876D9DEA2D94E4F7007EBA70 /* NotasTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		87B6D5FC2D8BA636000B60B0 /* Notas */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 87B6D60D2D8BA637000B60B0 /* Build configuration list for PBXNativeTarget "Notas" */;
@@ -80,6 +128,10 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					876D9DE92D94E4F7007EBA70 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 87B6D5FC2D8BA636000B60B0;
+					};
 					87B6D5FC2D8BA636000B60B0 = {
 						CreatedOnToolsVersion = 16.2;
 					};
@@ -100,11 +152,19 @@
 			projectRoot = "";
 			targets = (
 				87B6D5FC2D8BA636000B60B0 /* Notas */,
+				876D9DE92D94E4F7007EBA70 /* NotasTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		876D9DE82D94E4F7007EBA70 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		87B6D5FB2D8BA636000B60B0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -115,6 +175,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		876D9DE62D94E4F7007EBA70 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		87B6D5F92D8BA636000B60B0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -124,7 +191,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		876D9DEF2D94E4F7007EBA70 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87B6D5FC2D8BA636000B60B0 /* Notas */;
+			targetProxy = 876D9DEE2D94E4F7007EBA70 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		876D9DF12D94E4F7007EBA70 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y285ZR325T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = daniloosorio.NotasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notas.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Notas";
+			};
+			name = Debug;
+		};
+		876D9DF22D94E4F7007EBA70 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y285ZR325T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = daniloosorio.NotasTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Notas.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Notas";
+			};
+			name = Release;
+		};
 		87B6D60B2D8BA637000B60B0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -305,6 +416,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		876D9DF02D94E4F7007EBA70 /* Build configuration list for PBXNativeTarget "NotasTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				876D9DF12D94E4F7007EBA70 /* Debug */,
+				876D9DF22D94E4F7007EBA70 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		87B6D5F82D8BA636000B60B0 /* Build configuration list for PBXProject "Notas" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -9,53 +9,47 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    var viewModel: ViewModel = .init()
+    @State var showCreateNote: Bool = false
+    
     var body: some View {
-        NavigationSplitView {
+        NavigationStack {
             List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+                ForEach(viewModel.notes){ note in
+                    NavigationLink(value: note){
+                        VStack(alignment: .leading, content: {
+                            Text(note.title)
+                                .foregroundStyle(.primary)
+                            Text(note.getText)
+                                .foregroundStyle(.secondary)
+                        })
                     }
                 }
-                .onDelete(perform: deleteItems)
             }
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
+                ToolbarItem(placement: .status, content: {
+                    Button(action: {
+                        showCreateNote.toggle()
+                    },label: {
+                        Label("Creat Nota", systemImage: "square.and.pencil")
+                            .labelStyle(TitleAndIconLabelStyle())
+                    })
+                    .buttonStyle(.bordered)
+                    .tint(.blue)
+                    .bold()
+                })
             }
-        } detail: {
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
+            .navigationTitle(Text("📝Notas"))
+            .navigationDestination(for: Note.self, destination: {note in
+                UpdateNoteView(viewModel: viewModel, id: note.id, text: note.getText, title: note.title)})
+            .fullScreenCover(isPresented: $showCreateNote, content: {CreateNoteView(viewModel: viewModel)})
         }
     }
 }
 
 #Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+    ContentView(viewModel: .init(notes:[
+        .init(title:"holii", text: "nota 1", createdAt: .now),
+        .init(title:"holii", text: "nota 1", createdAt: .now)
+    ]))
 }
