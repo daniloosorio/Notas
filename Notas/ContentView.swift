@@ -41,7 +41,7 @@ struct ContentView: View {
             }
             .navigationTitle(Text("📝Notas"))
             .navigationDestination(for: Note.self, destination: {note in
-                UpdateNoteView(viewModel: viewModel, id: note.id, text: note.getText, title: note.title)})
+                UpdateNoteView(viewModel: viewModel, identifier: note.identifier, text: note.getText, title: note.title)})
             .fullScreenCover(isPresented: $showCreateNote, content: {CreateNoteView(viewModel: viewModel)})
         }
     }

@@ -63,4 +63,65 @@ final class ViewModelTests {
         #expect(viewModel.notes[2].text == text3)
     }
     
+    @Test func testUpdateNote(){
+        //Given
+        let title = "test title"
+        let text = "test text"
+        
+        viewModel.createNoteWith(title: title, text: text)
+        
+        let newTitle = "new test title"
+        let newText = "new test text"
+        
+        //When
+        if let id = viewModel.notes.first?.id{
+            viewModel.updateNoteWith(id: id, newTitle: newTitle, newText: newText)
+            
+            // Then
+            #expect(viewModel.notes.first?.title == newTitle)
+            #expect(viewModel.notes.first?.text  == newText)
+        } else {
+            Issue.record("no note was created")
+        }
+    }
+    
+    @Test
+    func testUpdateNoteEmptyText() {
+        let title = "test title"
+        let text = "test text"
+        
+        viewModel.createNoteWith(title: title, text: text)
+        
+        let newTitle = "new test title"
+        let newText : String? = nil
+        
+        
+        if let id = viewModel.notes.first?.id{
+            //when
+            viewModel.updateNoteWith(id: id, newTitle: newTitle, newText: newText)
+            
+            #expect(viewModel.notes.first?.text == "empty")
+        }else {
+            Issue.record( "no note was created")
+        }
+    }
+    
+    @Test
+    func testRemoveNote() {
+        let title = "test title"
+        let text = "test text"
+        
+        viewModel.createNoteWith(title: title, text: text)
+        
+        if let id = viewModel.notes.first?.id{
+            //when
+            viewModel.removeNoteWith(id: id)
+            
+            #expect(viewModel.notes.isEmpty)
+        } else {
+            Issue.record("no note was created")
+        }
+    }
+    
+
 }

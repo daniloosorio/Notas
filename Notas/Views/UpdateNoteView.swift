@@ -9,7 +9,7 @@ import SwiftUI
 
 struct UpdateNoteView: View {
     var viewModel: ViewModel
-    let id: UUID
+    let identifier: UUID
     @State var text: String = ""
     @State var title: String = ""
     
@@ -24,7 +24,7 @@ struct UpdateNoteView: View {
                 }
             }
             Button (action: {
-                viewModel.removeNoteWith(id: id)
+                viewModel.removeNoteWith(identifier: identifier)
                 dismiss()
             }, label: {
                 Text("Eliminar Nota")
@@ -37,7 +37,7 @@ struct UpdateNoteView: View {
         .toolbar {
             ToolbarItem {
                 Button {
-                    viewModel.updateNoteWith(id: id, newTitle: title, newText: text)
+                    viewModel.updateNoteWith(identifier:identifier, newTitle: title, newText: text)
                     dismiss()
                 } label: {
                     Text("crear Nota")
@@ -51,6 +51,6 @@ struct UpdateNoteView: View {
 
 #Preview {
     NavigationStack{
-        UpdateNoteView(viewModel: .init(), id: .init(), text: "texto de la nota", title: "editar nota")
+        UpdateNoteView(viewModel: .init(), identifier: .init(), text: "texto de la nota", title: "editar nota")
     }
 }
