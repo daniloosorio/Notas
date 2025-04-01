@@ -12,12 +12,16 @@ import Testing
 final class ViewModelTests {
     var viewModel: ViewModel!
     
-    init() {
+    init() {        
         self.viewModel = ViewModel()
     }
     
     deinit {
         
+    }
+    
+    func teardown(){
+        self.viewModel = ViewModel()
     }
     
     @Test
@@ -28,6 +32,7 @@ final class ViewModelTests {
         
         //when
         viewModel.createNoteWith(title: title, text: text)
+        
         
         //then
         #expect(viewModel.notes.count == 1)
@@ -47,11 +52,12 @@ final class ViewModelTests {
         
         let title3 = "test title 3"
         let text3 = "test text 3"
+    
+            //when
+             viewModel.createNoteWith(title: title1, text: text1)
+             viewModel.createNoteWith(title: title2, text: text2)
+             viewModel.createNoteWith(title: title3, text: text3)
         
-        //when
-        viewModel.createNoteWith(title: title1, text: text1)
-        viewModel.createNoteWith(title: title2, text: text2)
-        viewModel.createNoteWith(title: title3, text: text3)
         
         //then
         #expect(viewModel.notes.count == 3)
@@ -63,19 +69,20 @@ final class ViewModelTests {
         #expect(viewModel.notes[2].text == text3)
     }
     
-    @Test func testUpdateNote(){
+    @Test func testUpdateNote() {
         //Given
         let title = "test title"
         let text = "test text"
         
-        viewModel.createNoteWith(title: title, text: text)
         
+            viewModel.createNoteWith(title: title, text: text)
+    
         let newTitle = "new test title"
         let newText = "new test text"
         
         //When
-        if let id = viewModel.notes.first?.id{
-            viewModel.updateNoteWith(id: id, newTitle: newTitle, newText: newText)
+        if let identifier = viewModel.notes.first?.identifier{
+            viewModel.updateNoteWith(identifier: identifier, newTitle: newTitle, newText: newText)
             
             // Then
             #expect(viewModel.notes.first?.title == newTitle)
@@ -90,15 +97,17 @@ final class ViewModelTests {
         let title = "test title"
         let text = "test text"
         
-        viewModel.createNoteWith(title: title, text: text)
+        
+             viewModel.createNoteWith(title: title, text: text)
+        
         
         let newTitle = "new test title"
         let newText : String? = nil
         
         
-        if let id = viewModel.notes.first?.id{
+        if let identifier = viewModel.notes.first?.identifier{
             //when
-            viewModel.updateNoteWith(id: id, newTitle: newTitle, newText: newText)
+            viewModel.updateNoteWith(identifier:identifier, newTitle: newTitle, newText: newText)
             
             #expect(viewModel.notes.first?.text == "empty")
         }else {
@@ -107,15 +116,17 @@ final class ViewModelTests {
     }
     
     @Test
-    func testRemoveNote() {
+    func testRemoveNote()  {
         let title = "test title"
         let text = "test text"
         
-        viewModel.createNoteWith(title: title, text: text)
         
-        if let id = viewModel.notes.first?.id{
+            viewModel.createNoteWith(title: title, text: text)
+        
+        
+        if let identifier = viewModel.notes.first?.identifier{
             //when
-            viewModel.removeNoteWith(id: id)
+            viewModel.removeNoteWith(identifier: identifier)
             
             #expect(viewModel.notes.isEmpty)
         } else {

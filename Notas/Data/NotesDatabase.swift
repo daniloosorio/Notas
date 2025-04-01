@@ -29,8 +29,8 @@ final class NotesDatabase : NotesDatabaseProtocol {
         }
     }
     
-    @MainActor
-    func insert(note:Note) throws {
+    
+    @MainActor func insert(note:Note) throws {
         container.mainContext.insert(note)
         
         do {
@@ -41,13 +41,25 @@ final class NotesDatabase : NotesDatabaseProtocol {
         }
     }
     
+
+    
     @MainActor
-    func fetchAll() throws -> [Note] {
+    func fetchAll()  throws -> [Note] {
         let fetchDescriptor = FetchDescriptor<Note>(sortBy: [SortDescriptor<Note>(\.createdAt)])
         
         do {
-            return try container.mainContext.fetch(fetchDescriptor)
+            return try  container.mainContext.fetch(fetchDescriptor)
         } catch {
+            print("Error \(error.localizedDescription)")
+            throw DatabaseError.errorFetch
+        }
+    }
+    
+    @MainActor
+    func deleteAll() throws {
+        do {
+            try container.mainContext.delete(model: Note.self)
+        }catch {
             print("Error \(error.localizedDescription)")
             throw DatabaseError.errorFetch
         }

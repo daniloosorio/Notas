@@ -34,7 +34,9 @@ struct CreateNoteView: View {
                 }
                 ToolbarItem {
                     Button {
-                        viewModel.createNoteWith(title: title, text: text)
+                        Task {
+                            await viewModel.createNoteWith(title: title, text: text)
+                        }
                         dismiss()
                     } label: {
                         Text("crear Nota")

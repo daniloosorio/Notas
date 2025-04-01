@@ -8,6 +8,7 @@
 import Foundation
 
 protocol NotesDatabaseProtocol {
-    func insert(note: Note) async throws
-    func fetchAll() async throws -> [Note]
+    func insert(note: Note) throws
+    func fetchAll() throws -> [Note]
+    func deleteAll() throws
 }

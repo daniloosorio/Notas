@@ -11,5 +11,5 @@ enum DatabaseError: Error {
     case errorInsert(error: String)
     case errorFetch
     case errorUpdate
-    case errorNote
+    case errorRemove
 }
