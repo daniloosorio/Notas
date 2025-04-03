@@ -4,25 +4,35 @@
 //
 //  Created by Danilo Osorio on 26/03/25.
 //
-
 import Testing
 @testable import Notas
 
 @MainActor
 final class ViewModelTests {
-    var viewModel: ViewModel!
+    private var createNoteUseCase: CreateNoteUseCaseMock!
+    private var fetchAllNotesUseCase: FetchAllNotesUseCaseMock!
+    private var updateNoteUseCase: UpdateNoteUseCaseMock!
+    private var removeNoteUseCase: RemoveNoteUseCaseMock!
+    private var viewModel: ViewModel!
     
-    init() {        
-        self.viewModel = ViewModel()
+    init() {
+        print("Test initialization")
+        self.createNoteUseCase = CreateNoteUseCaseMock()
+        self.fetchAllNotesUseCase = FetchAllNotesUseCaseMock(noteCreator: createNoteUseCase)
+        self.updateNoteUseCase = UpdateNoteUseCaseMock(noteCreator: createNoteUseCase)
+        self.removeNoteUseCase = RemoveNoteUseCaseMock(noteCreator: createNoteUseCase)
+        self.viewModel = ViewModel(
+            createNoteUseCase: createNoteUseCase,
+            fetchAllNotesUseCase: fetchAllNotesUseCase,
+            updateNoteUseCase: updateNoteUseCase,
+            remoteNoteUseCase: removeNoteUseCase
+        )
     }
     
     deinit {
-        
+        print("Test cleanup")
     }
     
-    func teardown(){
-        self.viewModel = ViewModel()
-    }
     
     @Test
     func testCreateNote() {
@@ -52,11 +62,11 @@ final class ViewModelTests {
         
         let title3 = "test title 3"
         let text3 = "test text 3"
-    
-            //when
-             viewModel.createNoteWith(title: title1, text: text1)
-             viewModel.createNoteWith(title: title2, text: text2)
-             viewModel.createNoteWith(title: title3, text: text3)
+        
+        //when
+        viewModel.createNoteWith(title: title1, text: text1)
+        viewModel.createNoteWith(title: title2, text: text2)
+        viewModel.createNoteWith(title: title3, text: text3)
         
         
         //then
@@ -69,20 +79,20 @@ final class ViewModelTests {
         #expect(viewModel.notes[2].text == text3)
     }
     
-    @Test func testUpdateNote() {
+    @Test func testUpdateNote() async {
         //Given
         let title = "test title"
         let text = "test text"
         
         
-            viewModel.createNoteWith(title: title, text: text)
-    
+        viewModel.createNoteWith(title: title, text: text)
+        
         let newTitle = "new test title"
         let newText = "new test text"
         
         //When
         if let identifier = viewModel.notes.first?.identifier{
-            viewModel.updateNoteWith(identifier: identifier, newTitle: newTitle, newText: newText)
+            await viewModel.updateNoteWith(identifier: identifier, newTitle: newTitle, newText: newText)
             
             // Then
             #expect(viewModel.notes.first?.title == newTitle)
@@ -93,12 +103,12 @@ final class ViewModelTests {
     }
     
     @Test
-    func testUpdateNoteEmptyText() {
+    func testUpdateNoteEmptyText() async {
         let title = "test title"
         let text = "test text"
         
         
-             viewModel.createNoteWith(title: title, text: text)
+        viewModel.createNoteWith(title: title, text: text)
         
         
         let newTitle = "new test title"
@@ -107,7 +117,7 @@ final class ViewModelTests {
         
         if let identifier = viewModel.notes.first?.identifier{
             //when
-            viewModel.updateNoteWith(identifier:identifier, newTitle: newTitle, newText: newText)
+            await viewModel.updateNoteWith(identifier:identifier, newTitle: newTitle, newText: newText)
             
             #expect(viewModel.notes.first?.text == "empty")
         }else {
@@ -121,7 +131,7 @@ final class ViewModelTests {
         let text = "test text"
         
         
-            viewModel.createNoteWith(title: title, text: text)
+        viewModel.createNoteWith(title: title, text: text)
         
         
         if let identifier = viewModel.notes.first?.identifier{
@@ -134,5 +144,5 @@ final class ViewModelTests {
         }
     }
     
-
+    
 }

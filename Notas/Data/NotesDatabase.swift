@@ -55,15 +55,47 @@ final class NotesDatabase : NotesDatabaseProtocol {
         }
     }
     
+    
     @MainActor
-    func deleteAll() throws {
+    func update(identifier:UUID, title:String,text:String?) async throws {
+        let notePredicate = #Predicate<Note>{
+            $0.identifier == identifier
+        }
+        
+        var fetchDescriptor = FetchDescriptor<Note>(predicate: notePredicate)
+        fetchDescriptor.fetchLimit = 1
+        
         do {
-            try container.mainContext.delete(model: Note.self)
-        }catch {
-            print("Error \(error.localizedDescription)")
-            throw DatabaseError.errorFetch
+            guard let updateNote = try container.mainContext.fetch(fetchDescriptor).first else {
+                throw DatabaseError.errorUpdate
+            }
+            updateNote.title = title
+            updateNote.text = text
+            try container.mainContext.save()
+        }catch{
+            print("Error actualizando informacion")
+            throw DatabaseError.errorUpdate
         }
     }
-
     
+    @MainActor
+    func remove(identifier:UUID) throws {
+        let notePredicate = #Predicate<Note>{
+            $0.identifier == identifier
+        }
+        
+        var fetchDescriptor = FetchDescriptor<Note>(predicate: notePredicate)
+        fetchDescriptor.fetchLimit = 1
+        
+        do {
+            guard let deleteNote = try container.mainContext.fetch(fetchDescriptor).first else {
+                throw DatabaseError.errorUpdate
+            }
+            container.mainContext.delete(deleteNote)
+            try container.mainContext.save()
+        }catch{
+            print("Error actualizando informacion")
+            throw DatabaseError.errorUpdate
+        }
+    }
 }

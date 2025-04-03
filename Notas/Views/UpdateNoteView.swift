@@ -37,10 +37,12 @@ struct UpdateNoteView: View {
         .toolbar {
             ToolbarItem {
                 Button {
-                    viewModel.updateNoteWith(identifier:identifier, newTitle: title, newText: text)
+                    Task {
+                        await viewModel.updateNoteWith(identifier:identifier, newTitle: title, newText: text)
+                    }
                     dismiss()
                 } label: {
-                    Text("crear Nota")
+                    Text("Actualizar Nota")
                         .bold()
                 }
             }
