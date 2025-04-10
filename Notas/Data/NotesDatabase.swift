@@ -95,7 +95,7 @@ final class NotesDatabase : NotesDatabaseProtocol {
             try container.mainContext.save()
         }catch{
             print("Error actualizando informacion")
-            throw DatabaseError.errorUpdate
+            throw DatabaseError.errorRemove
         }
     }
 }

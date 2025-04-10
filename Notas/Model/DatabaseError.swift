@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum DatabaseError: Error {
+enum DatabaseError: Error, Equatable {
     case errorInsert(error: String)
     case errorFetch
     case errorUpdate

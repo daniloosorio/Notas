@@ -11,6 +11,7 @@ import Observation
 @Observable
 class ViewModel  {
     var notes : [Note]
+    var databaseError: DatabaseError?
     
     var createNoteUseCase: CreateNoteProtocol
     var fetchAllNotesUseCase: FetchAllNotesProtocol
@@ -66,6 +67,9 @@ class ViewModel  {
         do {
             try removeNoteUseCase.removeNoteWith(identifier: identifier)
             fetchAllNotes()
+        }catch let error as DatabaseError {
+            print("Error \(error.localizedDescription)")
+            databaseError = error
         }catch{
            print("Error \(error.localizedDescription)")
         }

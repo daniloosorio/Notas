@@ -7,6 +7,7 @@
 
 import Testing
 @testable import Notas
+import Foundation
 
 @MainActor
 final class ViewModelIntegrationTest {
@@ -116,5 +117,16 @@ final class ViewModelIntegrationTest {
         sut.removeNoteWith(identifier: note.identifier)
         #expect(sut.notes.count == 2,"no se borro la nota")
         
+    }
+    
+    @Test
+    func testRemoveNoteDatabaseShouldThrowError(){
+        setupTest()
+        
+        sut.removeNoteWith(identifier: UUID())
+        
+        #expect(sut.notes.count == 0)
+        #expect(sut.databaseError != nil)
+        #expect(sut.databaseError == DatabaseError.errorRemove,"errores diferentes")
     }
 }

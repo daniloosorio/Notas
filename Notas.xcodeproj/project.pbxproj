@@ -6,7 +6,20 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		87F111062D9F71110099C58D /* InlineSnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 87F111052D9F71110099C58D /* InlineSnapshotTesting */; };
+		87F111082D9F71110099C58D /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = 87F111072D9F71110099C58D /* SnapshotTesting */; };
+		87F1110A2D9F71110099C58D /* SnapshotTestingCustomDump in Frameworks */ = {isa = PBXBuildFile; productRef = 87F111092D9F71110099C58D /* SnapshotTestingCustomDump */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
+		870C5D6A2DA7543E007EA141 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 87B6D5F52D8BA636000B60B0 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 87B6D5FC2D8BA636000B60B0;
+			remoteInfo = Notas;
+		};
 		876D9DEE2D94E4F7007EBA70 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 87B6D5F52D8BA636000B60B0 /* Project object */;
@@ -17,11 +30,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		870C5D642DA7543E007EA141 /* NotasUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotasUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		876D9DEA2D94E4F7007EBA70 /* NotasTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NotasTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B6D5FD2D8BA636000B60B0 /* Notas.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Notas.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		870C5D652DA7543E007EA141 /* NotasUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = NotasUITests;
+			sourceTree = "<group>";
+		};
 		876D9DEB2D94E4F7007EBA70 /* NotasTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = NotasTests;
@@ -35,10 +54,20 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		870C5D612DA7543E007EA141 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		876D9DE72D94E4F7007EBA70 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87F1110A2D9F71110099C58D /* SnapshotTestingCustomDump in Frameworks */,
+				87F111062D9F71110099C58D /* InlineSnapshotTesting in Frameworks */,
+				87F111082D9F71110099C58D /* SnapshotTesting in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +86,7 @@
 			children = (
 				87B6D5FF2D8BA636000B60B0 /* Notas */,
 				876D9DEB2D94E4F7007EBA70 /* NotasTests */,
+				870C5D652DA7543E007EA141 /* NotasUITests */,
 				87B6D5FE2D8BA636000B60B0 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,6 +96,7 @@
 			children = (
 				87B6D5FD2D8BA636000B60B0 /* Notas.app */,
 				876D9DEA2D94E4F7007EBA70 /* NotasTests.xctest */,
+				870C5D642DA7543E007EA141 /* NotasUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,6 +104,29 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		870C5D632DA7543E007EA141 /* NotasUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 870C5D6C2DA7543E007EA141 /* Build configuration list for PBXNativeTarget "NotasUITests" */;
+			buildPhases = (
+				870C5D602DA7543E007EA141 /* Sources */,
+				870C5D612DA7543E007EA141 /* Frameworks */,
+				870C5D622DA7543E007EA141 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				870C5D6B2DA7543E007EA141 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				870C5D652DA7543E007EA141 /* NotasUITests */,
+			);
+			name = NotasUITests;
+			packageProductDependencies = (
+			);
+			productName = NotasUITests;
+			productReference = 870C5D642DA7543E007EA141 /* NotasUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		876D9DE92D94E4F7007EBA70 /* NotasTests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 876D9DF02D94E4F7007EBA70 /* Build configuration list for PBXNativeTarget "NotasTests" */;
@@ -91,6 +145,9 @@
 			);
 			name = NotasTests;
 			packageProductDependencies = (
+				87F111052D9F71110099C58D /* InlineSnapshotTesting */,
+				87F111072D9F71110099C58D /* SnapshotTesting */,
+				87F111092D9F71110099C58D /* SnapshotTestingCustomDump */,
 			);
 			productName = NotasTests;
 			productReference = 876D9DEA2D94E4F7007EBA70 /* NotasTests.xctest */;
@@ -128,6 +185,10 @@
 				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
+					870C5D632DA7543E007EA141 = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = 87B6D5FC2D8BA636000B60B0;
+					};
 					876D9DE92D94E4F7007EBA70 = {
 						CreatedOnToolsVersion = 16.2;
 						TestTargetID = 87B6D5FC2D8BA636000B60B0;
@@ -146,6 +207,9 @@
 			);
 			mainGroup = 87B6D5F42D8BA636000B60B0;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				87F111042D9F71110099C58D /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 87B6D5FE2D8BA636000B60B0 /* Products */;
 			projectDirPath = "";
@@ -153,11 +217,19 @@
 			targets = (
 				87B6D5FC2D8BA636000B60B0 /* Notas */,
 				876D9DE92D94E4F7007EBA70 /* NotasTests */,
+				870C5D632DA7543E007EA141 /* NotasUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		870C5D622DA7543E007EA141 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		876D9DE82D94E4F7007EBA70 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -175,6 +247,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		870C5D602DA7543E007EA141 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		876D9DE62D94E4F7007EBA70 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -192,6 +271,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		870C5D6B2DA7543E007EA141 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 87B6D5FC2D8BA636000B60B0 /* Notas */;
+			targetProxy = 870C5D6A2DA7543E007EA141 /* PBXContainerItemProxy */;
+		};
 		876D9DEF2D94E4F7007EBA70 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 87B6D5FC2D8BA636000B60B0 /* Notas */;
@@ -200,6 +284,40 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		870C5D6D2DA7543E007EA141 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y285ZR325T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = daniloosorio.NotasUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Notas;
+			};
+			name = Debug;
+		};
+		870C5D6E2DA7543E007EA141 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = Y285ZR325T;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = daniloosorio.NotasUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Notas;
+			};
+			name = Release;
+		};
 		876D9DF12D94E4F7007EBA70 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -416,6 +534,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		870C5D6C2DA7543E007EA141 /* Build configuration list for PBXNativeTarget "NotasUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				870C5D6D2DA7543E007EA141 /* Debug */,
+				870C5D6E2DA7543E007EA141 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		876D9DF02D94E4F7007EBA70 /* Build configuration list for PBXNativeTarget "NotasTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -444,6 +571,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		87F111042D9F71110099C58D /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pointfreeco/swift-snapshot-testing.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.18.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		87F111052D9F71110099C58D /* InlineSnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 87F111042D9F71110099C58D /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = InlineSnapshotTesting;
+		};
+		87F111072D9F71110099C58D /* SnapshotTesting */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 87F111042D9F71110099C58D /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTesting;
+		};
+		87F111092D9F71110099C58D /* SnapshotTestingCustomDump */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 87F111042D9F71110099C58D /* XCRemoteSwiftPackageReference "swift-snapshot-testing" */;
+			productName = SnapshotTestingCustomDump;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 87B6D5F52D8BA636000B60B0 /* Project object */;
 }
